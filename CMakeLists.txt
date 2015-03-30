@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 2.8 )
 
-project (witty-rackspace)
+project (wtrs)
 
 add_definitions(-std=c++11)
 
@@ -15,10 +15,13 @@ include_directories(${Boost_INCLUDE_DIRS})
 find_library( WT NAMES wtd wt )
 find_library( WT_HTTP NAMES wthttpd wthttp )
 
-add_library(wtrs src/main.cpp)
+add_executable(wtrs src/main.cpp)
 TARGET_LINK_LIBRARIES(wtrs ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} ${WT} ${WT_HTTP})
 
-file(COPY doc-root DESTINATION .)
-file(COPY app-root DESTINATION .)
+file(COPY doc-root
+          app-root
+          run.sh 
+          debug.sh 
+     DESTINATION .)
 
 enable_testing()

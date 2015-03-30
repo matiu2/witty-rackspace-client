@@ -12,18 +12,11 @@ SET( BOOST_LIBS ${Boost_PROGRAM_OPTIONS_LIBRARY} ${Boost_FILESYSTEM_LIBRARY} ${B
 include_directories(${Boost_INCLUDE_DIRS})
 
 # Load the wt libraries, search for debug ones if appropriate
-if ( ${DEBUG} )
-    find_library( WT NAMES wtd wt )
-    find_library( WT_HTTP NAMES wthttpd wthttp )
-    find_library( WT_TEST NAMES wttestd wttest )
-else()
-    find_library( WT NAMES wt )
-    find_library( WT_HTTP NAMES wthttp )
-    find_library( WT_TEST NAMES wttest )
-endif()
+find_library( WT NAMES wtd wt )
+find_library( WT_HTTP NAMES wthttpd wthttp )
 
-add_library(test_base empty.cpp)
-TARGET_LINK_LIBRARIES(test_base ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} ${WT_TEST} ${SQLITE_LIBS})
+add_library(wtrs src/main.cpp)
+TARGET_LINK_LIBRARIES(wtrs ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} ${WT} ${WT_HTTP})
 
 file(COPY doc-root DESTINATION .)
 file(COPY app-root DESTINATION .)

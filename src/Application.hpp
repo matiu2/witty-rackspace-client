@@ -2,13 +2,11 @@
 
 #include <Wt/WApplication>
 
-namespace WtRS {
+namespace wtrs {
 
 class Application : public Wt::WApplication {
 public:
-  Application(const Wt::WEnvironment& env) : Wt::WApplication(env) {
-
-  }
+  Application(const Wt::WEnvironment& env);
 };
 
 

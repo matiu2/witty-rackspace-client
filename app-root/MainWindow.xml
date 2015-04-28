@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<messages xmlns:if="Wt.WTemplate.conditions">
+
+  <message id="form-field">
+      <div class="row">
+          <div class="col-md-1">
+            <label for="${id:{1}}">${tr:{1}-label}</label>
+          </div>
+          <div class="col-md-3">
+            ${{1}}
+          </div>
+          <div class="col-md-8">
+            ${tr:{1}-info}
+          </div>
+      </div>
+  </message>
+  <message id="login-form">
+    <div class="container form">
+      ${block:form-field username}
+      ${block:form-field api-key}
+      ${login}
+    </div>
+  </message>
+  <message id="username-label">Username:</message>
+  <message id="username-info">Rackspace account username</message>
+  <message id="api-key-label">API Key</message>
+  <message id="api-key-info">Rackpsace API key</message>
+</messages>
+
